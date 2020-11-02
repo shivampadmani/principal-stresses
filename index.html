@@ -63,9 +63,10 @@
         event.preventDefault();
         var x = document.getElementById("stress-x").value;
         var y = document.getElementById("stress-y").value;
+        var z = document.getElementById("shear").value;
         var sigma1, sigma2, thetaP, thetaS, shearMax;
         //all fromulas here!!!
-
+        sigma1=((x+y)/2)+(Math.sqrt(Math.pow(((x-y)/2,2))+Math.pow(z,2)));
         document.getElementById("pstress-1").innerHTML = x;
         document.getElementById("pstress-2").innerHTML = y;
         /*document.getElementById("pstress-1").innerHTML = sigma1;
