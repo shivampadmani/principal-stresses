@@ -1,48 +1,81 @@
-
 <html>
-    <head>
-        <title>
-            Principal Stresses
-        </title>
-    </head>
-    <body class="fullbody">
-        <h1 id="heading">
-            Welcome to Principal Stress Calculator
-        </h1>
-        <img src="images/main_diagram.jpg" alt="Basic Diagram"></img>
-        <form id="user input">
-            <table>
-                <tr>
-                    <td>
-                         &#963<sub>x</sub>
-                    </td>
-                    <td>
-                        <input type="text"></input>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                         &#963<sub>y</sub>
-                    </td>
-                    <td>
-                        <input type="text"></input>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        &Tau;<sub>xy</sub>
-                    </td>
-                    <td>
-                        <input type="text"></input>
-                    </td>
-                </tr>
-            </table>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;
-            &nbsp;&nbsp;
-            &nbsp;&nbsp;
-            <input type="submit" id="view_button" value="Calculate">
-           
-        </form>
-    </body>
+
+<head>
+    <title>
+        Principal Stresses
+    </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="fullbody">
+    <h1 id="heading">
+        Welcome to Principal Stress Calculator
+    </h1>
+    <table id="mainbody">
+        <tr>
+<td>
+    <img src="images/main_diagram.jpg" alt="Basic Diagram"></img>
+    <form id="user_input">
+        <table>
+            <tr>
+                <td>
+                    &#963<sub>x</sub>
+                </td>
+                <td>
+                    <input class="textbox" id="stress-x" type="text"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &#963<sub>y</sub>
+                </td>
+                <td>
+                    <input id="stress-y" class="textbox"  type="text"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &Tau;<sub>xy</sub>
+                </td>
+                <td>
+                    <input id="shear" class="textbox" type="text"></input>
+                </td>
+            </tr>
+        </table>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;
+        &nbsp;&nbsp;
+        &nbsp;&nbsp;
+        <input type="submit" id="calculate_now" value="Calculate" onclick="calculate()">
+
+    </form>
+</td>
+    <td>
+        <p id="pstress-1"></p>
+        <p id="pstress-2"></p>
+        </p>
+    </td>
+        </tr>
+    </table>
+   
+    <script>
+         function calculate() {
+        event.preventDefault();
+        var x = document.getElementById("stress-x").value;
+        var y = document.getElementById("stress-y").value;
+        var sigma1, sigma2, thetaP, thetaS, shearMax;
+        //all fromulas here!!!
+
+        document.getElementById("pstress-1").innerHTML = x;
+        document.getElementById("pstress-2").innerHTML = y;
+        /*document.getElementById("pstress-1").innerHTML = sigma1;
+        document.getElementById("pstress-2").innerHTML = sigma2;
+        document.getElementById("pstress-1").innerHTML = sigma1;
+        document.getElementById("pstress-2").innerHTML = sigma2;*/
+    }
+
+
+    </script>
+</body>
+
 </html>
