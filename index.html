@@ -53,6 +53,8 @@
     <td>
         <p id="pstress-1"></p>
         <p id="pstress-2"></p>
+        <p id="pthetap"></p>
+        <p id="pshearmax"></p>
         </p>
     </td>
         </tr>
@@ -64,22 +66,24 @@
         var x = document.getElementById("stress-x").value;
         var y = document.getElementById("stress-y").value;
         var z = document.getElementById("shear").value;
-        var sigma1, sigma2, thetaP, thetaS, shearMax,mohrradius;
+        var sigma1, sigma2, thetaP, thetaS, shearMax,mohrradius,v;
         //all fromulas here!!!
         //mohrradius=Math.sqrt(Math.pow(((x-y)/2,2))+Math.pow(z,2));
-        mohrradius=Math.sqrt((x-y)*(x-y)/2+z*z);
+        mohrradius=Math.sqrt(((x-y)*(x-y)/4)+z*z);
+        v=(2*z)/(x-y);
         sigma1=((x+y)/2)+mohrradius;
         sigma2=((x+y)/2)-mohrradius;
+        thetaP=Math.atan(v)
+        shearMax=(sigma1-sigma2)/2;
         document.getElementById("pstress-1").innerHTML = sigma1;
         document.getElementById("pstress-2").innerHTML = sigma2;
+        document.getElementById("pshearmax").innerHTML = shearMax;
+        document.getElementById("pthetap").innerHTML = thetaP;
         /*document.getElementById("pstress-1").innerHTML = sigma1;
-        document.getElementById("pstress-2").innerHTML = sigma2;
-        document.getElementById("pstress-1").innerHTML = sigma1;
         document.getElementById("pstress-2").innerHTML = sigma2;*/
     }
 
 
     </script>
 </body>
-
 </html>
