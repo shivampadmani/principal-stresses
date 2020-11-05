@@ -134,6 +134,9 @@
             ctx_x.moveTo((sigma1 + sigma2) / 2, 200);
             ctx_x.lineTo((sigma1 + sigma2) / 2+ 100 * Math.cos(theta), 200+ r * Math.sin(theta));
             ctx_x.stroke();
+            ctx_x.moveTo((sigma1 + sigma2) / 2, 200);
+            ctx_x.lineTo((sigma1 + sigma2) / 2- 100 * Math.cos(theta), 200- r * Math.sin(theta));
+            ctx_x.stroke();
         }
     </script>
 </body>
