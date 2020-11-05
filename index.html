@@ -101,12 +101,12 @@
             v = (2 * z) / (x - y);
             sigma1 = ((x + y) / 2) + mohrradius;
             sigma2 = ((x + y) / 2) - mohrradius;
-            thetaP = (Math.atan(v)) / 2;
+            thetaP = radians_to_degrees((Math.atan(v)) / 2);
             shearMax = (sigma1 - sigma2) / 2;
             document.getElementById("pstress-1").innerHTML = sigma1 + " N/mm^2";
             document.getElementById("pstress-2").innerHTML = sigma2 + " N/mm^2";
             document.getElementById("pshearmax").innerHTML = shearMax + " N/mm^2";
-            document.getElementById("pthetap").innerHTML = thetaP + " radians";
+            document.getElementById("pthetap").innerHTML = thetaP + " degrees";
             /*document.getElementById("pstress-1").innerHTML = sigma1;
             document.getElementById("pstress-2").innerHTML = sigma2;*/
             drawcirc();
@@ -132,12 +132,18 @@
             r = 100;
             theta = thetaP;
             ctx_x.moveTo((sigma1 + sigma2) / 2, 200);
-            ctx_x.lineTo((sigma1 + sigma2) / 2+ 100 * Math.cos(theta), 200+ r * Math.sin(theta));
+            ctx_x.lineTo((sigma1 + sigma2) / 2 + 100 * Math.cos(theta), 200 + r * Math.sin(theta));
             ctx_x.stroke();
             ctx_x.moveTo((sigma1 + sigma2) / 2, 200);
-            ctx_x.lineTo((sigma1 + sigma2) / 2- 100 * Math.cos(theta), 200- r * Math.sin(theta));
+            ctx_x.lineTo((sigma1 + sigma2) / 2 - 100 * Math.cos(theta), 200 - r * Math.sin(theta));
             ctx_x.stroke();
         }
+        function radians_to_degrees(radians) {
+            var pi = Math.PI;
+            return radians * (180 / pi);
+        }
+
+
     </script>
 </body>
 
