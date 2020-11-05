@@ -93,12 +93,12 @@ id="calculate_now" value="Calculate" onclick="calculate()" type="submit"> </form
             v = (2 * z) / (x - y);
             sigma1 = ((x + y) / 2) + mohrradius;
             sigma2 = ((x + y) / 2) - mohrradius;
-            thetaP = radians_to_degrees((Math.atan(v)) / 2);
+            thetaP =(Math.atan(v)) / 2;
             shearMax = (sigma1 - sigma2) / 2;
             document.getElementById("pstress-1").innerHTML = sigma1 + " N/mm^2";
             document.getElementById("pstress-2").innerHTML = sigma2 + " N/mm^2";
             document.getElementById("pshearmax").innerHTML = shearMax + " N/mm^2";
-            document.getElementById("pthetap").innerHTML = thetaP + " degrees";
+            document.getElementById("pthetap").innerHTML =  radians_to_degrees(thetaP) + " degrees";
             /*document.getElementById("pstress-1").innerHTML = sigma1;
             document.getElementById("pstress-2").innerHTML = sigma2;*/
             drawcirc();
