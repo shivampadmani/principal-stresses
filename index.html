@@ -1,91 +1,83 @@
 <html>
-
-<head>
+  <head>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252">
     <title> Principal Stresses </title>
     <link rel="stylesheet" href="styles.css">
-</head>
-
-<body class="fullbody">
+  </head>
+  <body class="fullbody">
     <h1 id="heading"> Welcome to Principal Stress Calculator </h1>
     <table id="mainbody">
+      <tbody>
         <tr>
-            <td class="left">
-                <img src="images/main_diagram.jpg" alt="Basic Diagram" style="width: 391px; height: 385px;">
-                <form id="user_input">
-                    <table>
+          <td class="left"> <img src="images/main_diagram.jpg" alt="Basic Diagram"
 
-                        <tr>
-                            <td> &#963;<sub>x</sub> </td>
-                            <td> <input class="textbox" id="stress-x" type="text"> </td>
-                        </tr>
-                        <tr>
-                            <td> &#963;<sub>y</sub> </td>
-                            <td> <input id="stress-y" class="textbox" type="text"> </td>
-                        </tr>
-                        <tr>
-                            <td> &#932;<sub>xy</sub> </td>
-                            <td> <input id="shear" class="textbox" type="text"> </td>
-                        </tr>
-                    </table>
-                    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-                    <input id="calculate_now" value="Calculate" onclick="calculate()" type="submit">
-                </form>
-            </td>
-            <td class="right">
-                <table>
-                    <tr>
-                        <!--for drawing circle-->
-                        <canvas id="myCanvas" height="400px" width="700px"></canvas>
-                    </tr>
-                    <tr>
-                        <!--for showing answer-->
-                        <table id="answertable">
-                            <tr>
-                                <td>
-                                    <p>
-                                        Max. Principal Stress
-                                    </p>
-                                </td>
-                                <td>
-                                    <p id="pstress-1"></p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>
-                                        Min. Principal Stress
-                                    </p>
-                                </td>
-                                <td>
-                                    <p id="pstress-2"></p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>
-                                        Max. Shear Stress
-                                    </p>
-                                </td>
-                                <td>
-                                    <p id="pshearmax"></p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>
-                                        Angle of Principal planes
-                                    </p>
-                                </td>
-                                <td>
-                                    <p id="pthetap"></p>
-                                </td>
-                            </tr>
-                        </table>
-                    </tr>
-                </table>
-            </td>
+              style="width: 391px; height: 385px;">
+            <form id="user_input">
+              <table>
+                <tbody>
+                  <tr>
+                    <td> ?<sub>x</sub> </td>
+                    <td> <input class="textbox" id="stress-x" type="number">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td> ?<sub>y</sub> </td>
+                    <td> <input id="stress-y" class="textbox" type="number"> </td>
+                  </tr>
+                  <tr>
+                    <td> ?<sub>xy</sub> </td>
+                    <td> <input id="shear" class="textbox" type="number"> </td>
+                  </tr>
+                </tbody>
+              </table>
+              &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <input
+
+id="calculate_now" value="Calculate" onclick="calculate()" type="submit"> </form>
+          </td>
+          <td class="right"> <canvas id="myCanvas" height="400px" width="700px"></canvas>
+            <table>
+              <tbody>
+                <tr>
+                  <!--for drawing circle--> </tr>
+                <tr>
+                  <!--for showing answer--> </tr>
+              </tbody>
+            </table>
+            <table id="answertable">
+              <tbody>
+                <tr>
+                  <td>
+                    <p> Max. Principal Stress </p>
+                  </td>
+                  <td> <br>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p> Min. Principal Stress </p>
+                  </td>
+                  <td> <br>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p> Max. Shear Stress </p>
+                  </td>
+                  <td> <br>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p> Angle of Principal planes </p>
+                  </td>
+                  <td> <br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
         </tr>
+      </tbody>
     </table>
     <script>
         var mohrradius;
@@ -145,6 +137,5 @@
 
 
     </script>
-</body>
-
+  </body>
 </html>
