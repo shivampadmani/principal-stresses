@@ -68,7 +68,7 @@
                                     </p>
                                 </td>
                                 <td>
-                                    <p id="shearMax"></p>
+                                    <p id="pshearmax"></p>
                                 </td>
                             </tr>
                             <tr>
@@ -88,12 +88,21 @@
         </tr>
     </table>
     <script>
+        var mohrradius;
+        function drawcirc(){
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            var radius = radius;
+            ctx.beginPath();
+            ctx.arc(100, 100, mohrradius, 0, 2 * Math.PI);
+            ctx.stroke();
+    }   
     function calculate() {
            event.preventDefault();
             var x = document.getElementById("stress-x").value;
             var y = document.getElementById("stress-y").value;
             var z = document.getElementById("shear").value;
-            var sigma1, sigma2, thetaP, thetaS, shearMax, mohrradius, v;
+            var sigma1, sigma2, thetaP, thetaS, shearMax, v;
             //all fromulas here!!!
             mohrradius = Math.sqrt(((x - y) * (x - y) / 4) + z * z);
             v = (2 * z) / (x - y);
@@ -107,16 +116,9 @@
             document.getElementById("pthetap").innerHTML = thetaP + " radians";
             /*document.getElementById("pstress-1").innerHTML = sigma1;
             document.getElementById("pstress-2").innerHTML = sigma2;*/
-            drawcirc(mohrradius)
+            drawcirc();
     }
-    function drawcirc(radius){
-            var c = document.getElementById("myCanvas");
-            var ctx = c.getContext("2d");
-            var radius = radius;
-            ctx.beginPath();
-            ctx.arc(200, 175, radius, 0, 2 * Math.PI);
-            ctx.stroke();
-    }
+
     </script>
 </body>
 
