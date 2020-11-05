@@ -2,6 +2,9 @@
     text-align: center;
 }
 
+.textbox{
+  background-color: white;
+}
 #calculate_now {
     background-color: green;
     
@@ -25,11 +28,8 @@
   width: 50%;
   border: dotted 2px black;
 }
-       $primary: #11998e;
-       $secondary: #38ef7d;
-       $white: #fff;
-       $gray: #9b9b9b;
-       .form__group {
+     
+       .form_group {
          position: relative;
          padding: 15px 0 0;
          margin-top: 10px;
