@@ -29,14 +29,14 @@
                         </tr>
                     </table>
                     &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-                    <input id="calculate_now" value="Calculate" onclick="calculate()"     type="submit">
+                    <input id="calculate_now" value="Calculate" onclick="calculate()" type="submit">
                 </form>
             </td>
             <td class="right">
                 <table>
                     <tr>
                         <!--for drawing circle-->
-                        <canvas id="myCanvas" height="400px" width="750px"></canvas>
+                        <canvas id="myCanvas" height="400px" width="700px"></canvas>
                     </tr>
                     <tr>
                         <!--for showing answer-->
@@ -80,7 +80,7 @@
                                 <td>
                                     <p id="pthetap"></p>
                                 </td>
-                            </tr>   
+                            </tr>
                         </table>
                     </tr>
                 </table>
@@ -89,20 +89,13 @@
     </table>
     <script>
         var mohrradius;
-        function drawcirc(){
-            var c = document.getElementById("myCanvas");
-            var ctx = c.getContext("2d");
-            var radius = radius;
-            ctx.beginPath();
-            ctx.arc(100, 100, mohrradius, 0, 2 * Math.PI);
-            ctx.stroke();
-    }   
-    function calculate() {
-           event.preventDefault();
+        var sigma1, sigma2, thetaP, thetaS, shearMax, v;
+        function calculate() {
+            event.preventDefault();
             var x = document.getElementById("stress-x").value;
             var y = document.getElementById("stress-y").value;
             var z = document.getElementById("shear").value;
-            var sigma1, sigma2, thetaP, thetaS, shearMax, v;
+          
             //all fromulas here!!!
             mohrradius = Math.sqrt(((x - y) * (x - y) / 4) + z * z);
             v = (2 * z) / (x - y);
@@ -110,15 +103,41 @@
             sigma2 = ((x + y) / 2) - mohrradius;
             thetaP = (Math.atan(v)) / 2;
             shearMax = (sigma1 - sigma2) / 2;
-            document.getElementById("pstress-1").innerHTML =  sigma1 + " N/mm^2";
-            document.getElementById("pstress-2").innerHTML =  sigma2 + " N/mm^2";
-            document.getElementById("pshearmax").innerHTML =  shearMax + " N/mm^2";
+            document.getElementById("pstress-1").innerHTML = sigma1 + " N/mm^2";
+            document.getElementById("pstress-2").innerHTML = sigma2 + " N/mm^2";
+            document.getElementById("pshearmax").innerHTML = shearMax + " N/mm^2";
             document.getElementById("pthetap").innerHTML = thetaP + " radians";
             /*document.getElementById("pstress-1").innerHTML = sigma1;
             document.getElementById("pstress-2").innerHTML = sigma2;*/
             drawcirc();
-    }
-
+            drawline();
+        }
+        function drawcirc() {
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            var radius = radius;
+            ctx.beginPath();
+            ctx.arc((sigma1 + sigma2)/2,200, 100, 0, 2 * Math.PI);
+            ctx.stroke();
+        }
+        function drawline() {
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            ctx.moveTo(350, 0);
+            ctx.lineTo(350, 400);
+            ctx.stroke();
+            var ctx = canvas.getContext("2d");
+            ctx.moveTo(0, 200);
+            ctx.lineTo(700, 200);
+            ctx.stroke();
+            var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+r =  100;
+theta = thetaP;
+ctx.moveTo(200,100);
+ctx.lineTo(x1 + 100 * Math.cos(theta), y1 + r * Math.sin(theta));
+ctx.stroke();
+        }
     </script>
 </body>
 
