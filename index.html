@@ -95,7 +95,7 @@
             var x = document.getElementById("stress-x").value;
             var y = document.getElementById("stress-y").value;
             var z = document.getElementById("shear").value;
-          
+
             //all fromulas here!!!
             mohrradius = Math.sqrt(((x - y) * (x - y) / 4) + z * z);
             v = (2 * z) / (x - y);
@@ -113,30 +113,27 @@
             drawline();
         }
         function drawcirc() {
-            var c = document.getElementById("myCanvas");
-            var ctx = c.getContext("2d");
+            var c_circ = document.getElementById("myCanvas");
+            var ctx_circ = c_circ.getContext("2d");
             var radius = radius;
-            ctx.beginPath();
-            ctx.arc((sigma1 + sigma2)/2,200, 100, 0, 2 * Math.PI);
-            ctx.stroke();
+            ctx_circ.beginPath();
+            ctx_circ.arc((sigma1 + sigma2) / 2, 200, 100, 0, 2 * Math.PI);
+            ctx_circ.stroke();
         }
         function drawline() {
             var canvas = document.getElementById("myCanvas");
-            var ctx = canvas.getContext("2d");
-            ctx.moveTo(350, 0);
-            ctx.lineTo(350, 400);
-            ctx.stroke();
-            var ctx = canvas.getContext("2d");
-            ctx.moveTo(0, 200);
-            ctx.lineTo(700, 200);
-            ctx.stroke();
-            var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-r =  100;
-theta = thetaP;
-ctx.moveTo(200,100);
-ctx.lineTo(x1 + 100 * Math.cos(theta), y1 + r * Math.sin(theta));
-ctx.stroke();
+            var ctx_x = canvas.getContext("2d");
+            ctx_x.moveTo(350, 0);
+            ctx_x.lineTo(350, 400);
+            ctx_x.stroke();
+            ctx_x.moveTo(0, 200);
+            ctx_x.lineTo(700, 200);
+            ctx_x.stroke();
+            r = 100;
+            theta = thetaP;
+            ctx_x.moveTo((sigma1 + sigma2) / 2, 200);
+            ctx_x.lineTo((sigma1 + sigma2) / 2+ 100 * Math.cos(theta), 200+ r * Math.sin(theta));
+            ctx_x.stroke();
         }
     </script>
 </body>
