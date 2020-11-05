@@ -13,7 +13,7 @@
     </h1>
     <table id="mainbody">
         <tr>
-            <td>
+            <td class="left">
                 <img src="images/main_diagram.jpg" alt="Basic Diagram"></img>
                 <form id="user_input">
                     <table>
@@ -51,11 +51,21 @@
                 </form>
             </td>
        
-            <td id="answerbox">
-                <p id="pstress-1"></p>
-                <p id="pstress-2"></p>
-                <p id="pthetap"></p>
-                <p id="pshearmax"></p>
+            <td class="right">
+                <table>
+                    <tr class="circlebox">
+<!--circle will be drawn here.-->
+<canvas id="myCanvas"></canvas>
+ 
+                    </tr>
+                    <tr class="answerbox">
+                        <p id="pstress-1"></p>
+                        <p id="pstress-2"></p>
+                        <p id="pthetap"></p>
+                        <p id="pshearmax"></p>
+                    </tr>
+                </table>
+               
 
             </td>
         </tr>
@@ -82,9 +92,14 @@
             document.getElementById("pthetap").innerHTML = "The angle of principal planes is " + thetaP + "radians";
             /*document.getElementById("pstress-1").innerHTML = sigma1;
             document.getElementById("pstress-2").innerHTML = sigma2;*/
-        }
+      
 
-
+        var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.beginPath();
+ctx.arc(100, 75,mohrradius, 0, 2 * Math.PI);
+ctx.stroke();
+}
     </script>
 </body>
 
