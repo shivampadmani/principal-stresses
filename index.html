@@ -95,7 +95,9 @@
             var x = document.getElementById("stress-x").value;
             var y = document.getElementById("stress-y").value;
             var z = document.getElementById("shear").value;
-
+x=parseFloat(x);
+y=parseFloat(y);
+z=parseFloat(z);
             //all fromulas here!!!
             mohrradius = Math.sqrt(((x - y) * (x - y) / 4) + z * z);
             v = (2 * z) / (x - y);
@@ -107,8 +109,7 @@
             document.getElementById("pstress-2").innerHTML = sigma2 + " N/mm^2";
             document.getElementById("pshearmax").innerHTML = shearMax + " N/mm^2";
             document.getElementById("pthetap").innerHTML =  radians_to_degrees(thetaP) + " degrees";
-            /*document.getElementById("pstress-1").innerHTML = sigma1;
-            document.getElementById("pstress-2").innerHTML = sigma2;*/
+           
             drawcirc();
             drawline();
         }
