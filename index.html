@@ -1,14 +1,13 @@
 <html>
-
-<head>
+  <head>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252">
     <title> Principal Stresses </title>
     <link rel="stylesheet" href="styles.css">
-</head>
-
-<body class="fullbody">
+  </head>
+  <body class="fullbody">
     <h1 id="heading"> Welcome to Principal Stress Calculator </h1>
     <table id="mainbody">
+      <tbody>
         <tr>
             <td class="left">
                 <img src="images/main_diagram.jpg" alt="Basic Diagram" style="width: 391px; height: 385px;">
@@ -85,10 +84,11 @@
                 </table>
             </td>
         </tr>
+      </tbody>
     </table>
     <script>
         var mohrradius;
-        var sigma1, sigma2, thetaP, thetaS, shearMax, v;
+        var sigma1, sigma2, thetaP, thetaS, shearMax, v, a,b,c,d,e,f;
         function calculate() {
             event.preventDefault();
             var x = document.getElementById("stress-x").value;
@@ -98,7 +98,12 @@
             y = parseFloat(y);
             z = parseFloat(z);
             //all fromulas here!!!
-            mohrradius = Math.sqrt(((x - y) * (x - y) / 4) + z * z);
+            d=(x+y)/2;
+            f=(x-d);
+            e=f*f;
+            a=(e+ (z * z));
+            b=(x + y) / 2;
+            mohrradius = Math.sqrt(a);
             v = (2 * z) / (x - y);
             sigma1 = ((x + y) / 2) + mohrradius;
             sigma2 = ((x + y) / 2) - mohrradius;
@@ -151,6 +156,5 @@
 
 
     </script>
-</body>
-
+  </body>
 </html>
