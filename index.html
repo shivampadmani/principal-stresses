@@ -14,17 +14,16 @@
                 <img src="images/main_diagram.jpg" alt="Basic Diagram" style="width: 391px; height: 385px;">
                 <form id="user_input">
                     <table>
-
                         <tr>
-                            <td> &#963;<sub>x</sub> </td>
+                            <td class="name"> &#963;<sub>x</sub> </td>
                             <td> <input class="textbox" id="stress-x" type="text"> </td>
                         </tr>
                         <tr>
-                            <td> &#963;<sub>y</sub> </td>
+                            <td class="name"> &#963;<sub>y</sub> </td>
                             <td> <input id="stress-y" class="textbox" type="text"> </td>
                         </tr>
                         <tr>
-                            <td> &#932;<sub>xy</sub> </td>
+                            <td class="name"> &#932;<sub>xy</sub> </td>
                             <td> <input id="shear" class="textbox" type="text"> </td>
                         </tr>
                     </table>
@@ -36,7 +35,7 @@
                 <table>
                     <tr>
                         <!--for drawing circle-->
-                        <canvas id="myCanvas" height="400px" width="700px"></canvas>
+                        <canvas id="myCanvas" height="500px" width="900px"></canvas>
                     </tr>
                     <tr>
                         <!--for showing answer-->
@@ -95,50 +94,56 @@
             var x = document.getElementById("stress-x").value;
             var y = document.getElementById("stress-y").value;
             var z = document.getElementById("shear").value;
-x=parseFloat(x);
-y=parseFloat(y);
-z=parseFloat(z);
+            x = parseFloat(x);
+            y = parseFloat(y);
+            z = parseFloat(z);
             //all fromulas here!!!
             mohrradius = Math.sqrt(((x - y) * (x - y) / 4) + z * z);
             v = (2 * z) / (x - y);
             sigma1 = ((x + y) / 2) + mohrradius;
             sigma2 = ((x + y) / 2) - mohrradius;
-            thetaP =(Math.atan(v)) / 2;
+            thetaP = (Math.atan(v)) / 2;
             shearMax = (sigma1 - sigma2) / 2;
             document.getElementById("pstress-1").innerHTML = sigma1 + " N/mm^2";
             document.getElementById("pstress-2").innerHTML = sigma2 + " N/mm^2";
             document.getElementById("pshearmax").innerHTML = shearMax + " N/mm^2";
-            document.getElementById("pthetap").innerHTML =  radians_to_degrees(thetaP) + " degrees";
-           
+            document.getElementById("pthetap").innerHTML = radians_to_degrees(thetaP) + " degrees";
             drawcirc();
             drawline();
         }
         function drawcirc() {
+
             var c_circ = document.getElementById("myCanvas");
+
             var ctx_circ = c_circ.getContext("2d");
+            ctx_circ.clearRect(0, 0, c_circ.width, c_circ.height);
             var radius = radius;
             ctx_circ.beginPath();
-            ctx_circ.arc((sigma1 + sigma2) / 2, 200, 100, 0, 2 * Math.PI);
+            ctx_circ.arc(450+(sigma1 + sigma2) / 2, 250, 100, 0, 2 * Math.PI);
             ctx_circ.stroke();
         }
         function drawline() {
             var canvas = document.getElementById("myCanvas");
             var ctx_x = canvas.getContext("2d");
-            ctx_x.moveTo(350, 0);
-            ctx_x.lineTo(350, 400);
+            ctx_x.moveTo(450, 0);
+            ctx_x.lineTo(450, 900);
             ctx_x.stroke();
-            ctx_x.moveTo(0, 200);
-            ctx_x.lineTo(700, 200);
+            ctx_x.moveTo(0, 250);
+            ctx_x.lineTo(900, 250);
             ctx_x.stroke();
             r = 100;
-            theta = thetaP;
-            ctx_x.moveTo((sigma1 + sigma2) / 2, 200);
-            ctx_x.lineTo((sigma1 + sigma2) / 2 + 100 * Math.cos(theta), 200 + r * Math.sin(theta));
+            theta = thetaP * 2;
+            ctx_x.moveTo(450+(sigma1 + sigma2) / 2, 250);
+            ctx_x.lineTo(450+(sigma1 + sigma2) / 2 + 100 * Math.cos(theta), 250 + r * Math.sin(theta));
             ctx_x.stroke();
-            ctx_x.moveTo((sigma1 + sigma2) / 2, 200);
-            ctx_x.lineTo((sigma1 + sigma2) / 2 - 100 * Math.cos(theta), 200 - r * Math.sin(theta));
+            ctx_x.moveTo(450+ (sigma1 + sigma2) / 2, 250);
+            ctx_x.lineTo(450+ (sigma1 + sigma2) / 2 - 100 * Math.cos(theta), 250 - r * Math.sin(theta));
             ctx_x.stroke();
-        }
+            ctx_x.font = "30px Comic Sans MS";
+            ctx_x.fillStyle = "red";
+            ctx_x.fillText("longitudinal stress", 644,245);
+            ctx_x.fillText("shear stress", 450,100);
+                 }
         function radians_to_degrees(radians) {
             var pi = Math.PI;
             return radians * (180 / pi);
