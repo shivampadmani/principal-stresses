@@ -7,7 +7,12 @@
   border-radius: 15px;
   margin-left: 50px;
 }
-
+.ins{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: normal;
+  text-color: red;
+ text-align: center;
+}
 .name {
   font-size: xx-large;
 }
@@ -21,7 +26,7 @@
 }
 
 body {
-  background-color: yellow;
+  background-color: pink;
 }
 
 #calculate_now:hover {
