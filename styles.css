@@ -32,7 +32,7 @@ hr {
 }
 
 body {
-  background-color: #7cabf3;
+  background-image: linear-gradient(to left, #1dc4e2   0%, rgba(108, 158, 206, 0.781) 50%);
 }
 
 #calculate_now:hover {
