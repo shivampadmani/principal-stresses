@@ -109,3 +109,14 @@ canvas {
   border: 1px solid black;
   border-radius: 25px;
 }
+#dothis{
+  animation: move 0.5s infinite;
+}
+@keyframes move {
+  from {
+    color: #3844f0;
+  }
+  to {
+    color: rgb(12, 14, 146);
+  }
+}
