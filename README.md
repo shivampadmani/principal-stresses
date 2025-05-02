@@ -1,2 +1,2 @@
 # principal stresses 
-find principal stresses of plane stress condition
+site is live at: https://shivampadmani.github.io/principal-stresses/
